@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { useRouter } from 'next/router';
+
 import { getFilteredEvents } from '../../dummy-data';
 import EventList from '../../components/events/event-list';
 import ResultsTitle from '../../components/events/results-title';
 import Button from '../../components/ui/button';
 import ErrorAlert from '../../components/ui/error-alert';
 
-const FilteredEventPage = () => {
+function FilteredEventsPage() {
   const router = useRouter();
 
   const filterData = router.query.slug;
@@ -31,10 +32,11 @@ const FilteredEventPage = () => {
   ) {
     return (
       <Fragment>
+        <ErrorAlert>
+          <p>Invalid filter. Please adjust your values!</p>
+        </ErrorAlert>
         <div className='center'>
-          <ErrorAlert>
-            <p>Invalid filter. please adjust your values!</p>;
-          </ErrorAlert>
+          <Button link='/events'>Show All Events</Button>
         </div>
       </Fragment>
     );
@@ -49,7 +51,7 @@ const FilteredEventPage = () => {
     return (
       <Fragment>
         <ErrorAlert>
-          <p>No events found for the chosen filter!</p>;
+          <p>No events found for the chosen filter!</p>
         </ErrorAlert>
         <div className='center'>
           <Button link='/events'>Show All Events</Button>
@@ -66,6 +68,6 @@ const FilteredEventPage = () => {
       <EventList items={filteredEvents} />
     </Fragment>
   );
-};
+}
 
-export default FilteredEventPage;
+export default FilteredEventsPage;

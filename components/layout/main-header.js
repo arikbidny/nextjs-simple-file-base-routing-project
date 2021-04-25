@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import React from 'react';
+
 import classes from './main-header.module.css';
 
-const MainHeader = () => {
+function MainHeader() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>
@@ -17,6 +17,6 @@ const MainHeader = () => {
       </nav>
     </header>
   );
-};
+}
 
 export default MainHeader;
